@@ -1,35 +1,121 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="10dp"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="6dp">
 
-    <ImageView
-        android:id="@+id/imgRecipe"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtName"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingTop="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
 
-    <TextView
-        android:id="@+id/txtCategory"
-        android:textSize="14sp"
-        android:paddingTop="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/imgRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/txtTime"
-        android:textSize="14sp"
-        android:paddingTop="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/gradient_bottom" />
 
-</LinearLayout>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:backgroundTint="@android:color/white"
+                android:text="Категория" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="48dp"
+                android:backgroundTint="@android:color/white"
+                android:text="Сложность" />
+
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_margin="12dp"
+                android:layout_gravity="bottom|end"
+                android:src="@android:drawable/btn_star_big_on"
+                android:visibility="gone"
+                app:tint="@android:color/holo_orange_light" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- ⭐ ИСПРАВЛЕНО: txtRecipeName -> txtName ⭐ -->
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Название рецепта"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- ⭐ ДОБАВЛЕНО: txtDescription ⭐ -->
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="Описание"
+                android:textColor="#666"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <!-- ⭐ ИСПРАВЛЕНО: txtCookingTime -> txtTime ⭐ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/txtTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 мин"
+                    android:textColor="#777"
+                    android:drawableStart="@android:drawable/ic_menu_recent_history"
+                    android:drawablePadding="4dp" />
+
+                <!-- ⭐ ДОБАВЛЕНО: txtIngredientsCount ⭐ -->
+                <TextView
+                    android:id="@+id/txtIngredientsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="5 ингр."
+                    android:textColor="#777"
+                    android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+                    android:drawablePadding="4dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
